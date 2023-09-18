@@ -1,0 +1,51 @@
+In order to compile and run the project follow the given steps:
+
+- Open Visual Studio 2015
+- Select "Open Project"
+- Select "BeeVision.sln" file in "BeeVision" folder you downloaded
+- Open "BeeVision.cpp" file
+- Enter the address of the input image to be considered at line 71
+- Enter the save address for the final image at line 106
+- Run the debugger and obtain the result
+
+In case an error related to OpenCV occurs, follow the given steps:
+
+- Be sure that you have OpenCV 2.4. in your device (2.4.13 in my case)
+- Create a new system environment variable with the name OPENCV_DIR and set the value to the location of where the OpenCV build file is installed (D:\opencv\opencv\build in my case)
+- In Visual Studio, after right clicking on the project name, select properties
+- Be sure about the followings:
+	- Choose "All Configurations" as the configuration and "x64" as the Platform
+	- Go to Configuration Properties -> C/C++ -> General
+	- Add "$(OPENCV_DIR)\include" to the Additional Include Directories section
+	- Go to Configuration Properties -> Linker -> General
+	- Add "$(OPENCV_DIR)\x64\vc14\lib" to the Additional Library Directories section
+	- Go to Configuration Properties -> Debugging
+	- Add "PATH=$(OPENCV_DIR)\x64\vc14\bin;%PATH%" to the Environment section
+	- Click the Configuration Manager in the top right corner of the Property Pages window
+	- Set the "Active Solution Platform" and "Platform" to x64 in both locations
+	- Change the Configuration of the Property Pages window to "Debug"
+	- Go to Configuration Properties -> Linker -> Input
+	- Add the following files to the Additional Dependencies section (names may change depending on the versin of OpenCV):
+		- opencv_calib3d2413d.lib
+		- opencv_contrib2413d.lib
+		- opencv_core2413d.lib
+		- opencv_features2d2413d.lib
+		- opencv_flann2413d.lib
+		- opencv_gpu2413d.lib
+		- opencv_highgui2413d.lib
+		- opencv_imgproc2413d.lib
+		- opencv_legacy2413d.lib
+		- opencv_ml2413d.lib
+		- opencv_nonfree2413d.lib
+		- opencv_objdetect2413d.lib
+		- opencv_photo2413d.lib
+		- opencv_stitching2413d.lib
+		- opencv_superres2413d.lib
+		- opencv_ts2413d.lib
+		- opencv_video2413d.lib
+		- opencv_videostab2413d.lib
+	- Change the Configuration of the Property Pages window to "Release"
+	- Go to Configuration Properties -> Linker -> Input
+	- Add the same file names to the Additional Dependencies section
+	- Click Ok
+- Good to go!
